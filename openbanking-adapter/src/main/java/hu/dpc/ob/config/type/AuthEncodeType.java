@@ -7,9 +7,9 @@
  */
 package hu.dpc.ob.config.type;
 
-import java.util.Base64;
+import org.apache.logging.log4j.util.Strings;
 
-import org.apache.commons.lang3.StringUtils;
+import java.util.Base64;
 
 public enum AuthEncodeType {
     NONE,
@@ -22,7 +22,7 @@ public enum AuthEncodeType {
     ;
 
     public static AuthEncodeType forConfig(String config) {
-        if (StringUtils.isEmpty(config))
+        if (Strings.isEmpty(config))
             return NONE;
         return AuthEncodeType.valueOf(config.toUpperCase());
     }

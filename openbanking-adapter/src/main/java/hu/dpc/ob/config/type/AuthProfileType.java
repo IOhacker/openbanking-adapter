@@ -10,10 +10,9 @@ package hu.dpc.ob.config.type;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
+import org.apache.logging.log4j.util.Strings;
 
 import javax.validation.constraints.NotNull;
-
-import org.apache.commons.lang3.StringUtils;
 
 @Getter
 @RequiredArgsConstructor(access = AccessLevel.PRIVATE)
@@ -29,7 +28,7 @@ public enum AuthProfileType {
 
 
     public static AuthProfileType forConfig(String config) {
-        if (StringUtils.isEmpty(config))
+        if (Strings.isEmpty(config))
             return NONE;
         return AuthProfileType.valueOf(config.toUpperCase());
     }
@@ -38,6 +37,6 @@ public enum AuthProfileType {
         if (value == null)
             return null;
         String prefix = getPrefix();
-        return StringUtils.isEmpty(prefix) || value.startsWith(prefix) ? value : (prefix + value);
+        return Strings.isEmpty(prefix) || value.startsWith(prefix) ? value : (prefix + value);
     }
 }
