@@ -211,7 +211,7 @@ access-settings:
         - name: ${tn2}
           host: https://api-${domain.tn2}
       - name: userinfo
-        port: 8243
+        port: 443
         base:
         path: userinfo
         method: GET
