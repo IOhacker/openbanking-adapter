@@ -211,7 +211,7 @@ access-settings:
         - name: ${tn2}
           host: https://api-${domain.tn2}
       - name: userinfo
-        port: 443
+        port: 8243
         base:
         path: userinfo
         method: GET
@@ -265,7 +265,7 @@ psp:
     host: https://core.tiermoney.com
   tn2:
     host: https://tpp-server.tiermoney.com
-  port: 8443
+  port: 443
   base: fineract-provider/api/v1
 hub:
   tn1:
