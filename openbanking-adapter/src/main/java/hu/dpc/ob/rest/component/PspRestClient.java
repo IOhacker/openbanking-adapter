@@ -264,8 +264,7 @@ public class PspRestClient {
      */
     private void login(TenantAuth tenantAuthData) {
         OperationProperties opProps = pspSettings.getOperationProps(PspSettings.PspOperation.AUTH);
-        //String tenant = tenantAuthData.getTenant();
-        String tenant = "default";
+        String tenant = tenantAuthData.getTenant();        
         @NotNull HttpMethod method = opProps.getHttpMethod();
         log.debug(String.format("Call PSP " + method + " /" + opProps.getName() + ", tenant: %s", tenant));
 
