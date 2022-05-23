@@ -20,9 +20,7 @@ import java.beans.Transient;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @SuppressWarnings("unused")
 public class PspAccountsSavingsStatusData extends EnumOptionData {
-    
-    private String code;
-    private String value;
+
     private boolean submittedAndPendingApproval;
     private boolean approved;
     private boolean rejected;

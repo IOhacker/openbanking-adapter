@@ -23,6 +23,8 @@ import java.beans.Transient;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.List;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 @Getter
 @Setter(AccessLevel.PROTECTED)
@@ -30,6 +32,8 @@ import java.util.List;
 @SuppressWarnings("unused")
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class PspAccountResponseDto {
+    
+    private static Logger log = LoggerFactory.getLogger(PspAccountResponseDto.class);
 
     @NotNull
     private String accountId;
@@ -68,6 +72,9 @@ public class PspAccountResponseDto {
 
     @Transient
     public String getApiNickName() {
+        log.info("getShortProductName "+getShortProductName());
+        log.info("getAccountId "+getAccountId());
+        log.info("getShortProductName "+getShortProductName());
         return getProductName() == null
                 ? (getShortProductName() == null ? getAccountId() : getShortProductName())
                 : getProductName();
@@ -75,6 +82,8 @@ public class PspAccountResponseDto {
 
     @Transient
     public AccountType getApiAccountType() {
+        log.info("getAccountType "+getAccountType());        
+        
         return getAccountType() == null || "INDIVIDUAL".equals(accountType) ? AccountType.PERSONAL : AccountType.BUSINESS;
     }
 
@@ -87,6 +96,8 @@ public class PspAccountResponseDto {
     @Transient
     @NotNull
     public AccountStatus getApiAccountStatus() {
+        log.info("status "+getStatus());
+        log.info("subStatus "+getSubStatus());
         if (subStatus != null && !"NONE".equals(subStatus ))
             return AccountStatus.DISABLED;
         switch (status) {
