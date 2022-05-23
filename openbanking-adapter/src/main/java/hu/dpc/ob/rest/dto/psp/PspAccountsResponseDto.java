@@ -22,6 +22,8 @@ public class PspAccountsResponseDto {
 
     private List<PspAccountsLoanData> loanAccounts;
     private List<PspAccountsSavingsData> savingsAccounts;
+    //TODO CREATE PspGroupLoanIndividualMonitoringAccounts
+    private List<PspAccountsGuarantorData> groupLoanIndividualMonitoringAccounts;
     private List<PspAccountsShareData> shareAccounts ;
     private List<PspAccountsGuarantorData> guarantorAccounts;
 }
