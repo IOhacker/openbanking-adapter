@@ -26,7 +26,7 @@ import java.time.LocalDate;
 public class PspAccountsSavingsData extends PspAccountsData {
 
     private String accountNo;
-    private Integer productId;
+    private Long productId;
     private String productName;
     private String shortProductName;
     private PspAccountsSavingsStatusData status;
