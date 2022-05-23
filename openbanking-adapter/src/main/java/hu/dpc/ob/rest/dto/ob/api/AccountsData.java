@@ -19,11 +19,15 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 @Getter
 @Setter(AccessLevel.PROTECTED)
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class AccountsData {
+    
+    private static Logger log = LoggerFactory.getLogger(AccountsData.class);
 
     @JsonProperty(value = "Account", required = true)
     private List<AccountData> accounts;
@@ -49,6 +53,7 @@ public class AccountsData {
     @NotNull
     public static AccountsData transform(@NotNull PspAccountsResponseDto pspAccounts, Map<String, PspIdentifiersResponseDto> idMap, boolean detail, String accountId) {
         List<AccountData> accounts = new ArrayList<>();
+        log.info("pspAccounts.getSavingsAccounts().size() "+pspAccounts.getSavingsAccounts().size());
         List<PspAccountsSavingsData> savingsAccounts = pspAccounts.getSavingsAccounts();
         if (savingsAccounts != null) {
             for (PspAccountsSavingsData pspAccount : savingsAccounts) {
@@ -99,6 +104,7 @@ public class AccountsData {
     }
 
     public AccountData getAccount(String accountId) {
+        log.info("accountId " +accountId);
         for (AccountData account : accounts) {
             if (account.getAccountId().equals(accountId))
                 return account;
