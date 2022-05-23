@@ -21,12 +21,16 @@ import lombok.Setter;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 @Getter
 @Setter(AccessLevel.PROTECTED)
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @SuppressWarnings("unused")
 public class PartyData {
+    
+    private static Logger log = LoggerFactory.getLogger(PartyData.class);
 
     @JsonProperty(value = "PartyId", required = true)
     @NotEmpty
@@ -76,6 +80,7 @@ public class PartyData {
         this.partyType = partyType;
         this.name = name;
         this.fullLegalName = fullLegalName;
+        log.info("this.fullLegalName "+this.fullLegalName);
         this.legalStructure = legalStructure;
         this.beneficialOwnership = beneficialOwnership;
         this.accountRole = accountRole;
@@ -90,6 +95,11 @@ public class PartyData {
 
     @NotNull
     static PartyData transform(@NotNull PspClientResponseDto pspClient) {
+        log.info("pspClient.getDisplayName() "+pspClient.getDisplayName());
+        log.info("pspClient.getFullname() "+pspClient.getFullname());
+        log.info("pspClient.getId() "+pspClient.getId());
+        log.info("pspClient.getEmailAddress() "+pspClient.getEmailAddress());
+        log.info("pspClient.getMobileNo() "+pspClient.getMobileNo());
         return new PartyData(String.valueOf(pspClient.getId()), null, pspClient.getDisplayName(), pspClient.getFullname(), null,
                 false, null, pspClient.getEmailAddress(), null, pspClient.getMobileNo());
     }

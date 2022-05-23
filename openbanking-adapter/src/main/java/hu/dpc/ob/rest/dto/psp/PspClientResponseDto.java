@@ -25,7 +25,7 @@ import java.util.List;
 @SuppressWarnings("unused")
 @JsonIgnoreProperties(ignoreUnknown=true)
 public class PspClientResponseDto {
-
+    
     private Long id;
     private String accountNo;
     private String externalId;

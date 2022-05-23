@@ -16,12 +16,16 @@ import lombok.Setter;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 @Getter
 @Setter(AccessLevel.PROTECTED)
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @SuppressWarnings("unused")
 public class SinglePartyData {
+    
+    private static Logger log = LoggerFactory.getLogger(SinglePartyData.class);
 
     @JsonProperty(value = "Party")
     @Valid
@@ -33,6 +37,7 @@ public class SinglePartyData {
 
     @NotNull
     static SinglePartyData transform(@NotNull PspClientResponseDto pspClient) {
+        log.info("pspClient "+pspClient.getFullname());
         PartyData data = PartyData.transform(pspClient);
         return new SinglePartyData(data);
     }

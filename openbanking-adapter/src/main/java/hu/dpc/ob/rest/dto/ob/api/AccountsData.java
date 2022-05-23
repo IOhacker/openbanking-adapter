@@ -53,7 +53,7 @@ public class AccountsData {
     @NotNull
     public static AccountsData transform(@NotNull PspAccountsResponseDto pspAccounts, Map<String, PspIdentifiersResponseDto> idMap, boolean detail, String accountId) {
         List<AccountData> accounts = new ArrayList<>();
-        log.info("pspAccounts.getSavingsAccounts().size() "+pspAccounts.getSavingsAccounts().size());
+        log.debug("pspAccounts.getSavingsAccounts().size() "+pspAccounts.getSavingsAccounts().size());
         List<PspAccountsSavingsData> savingsAccounts = pspAccounts.getSavingsAccounts();
         if (savingsAccounts != null) {
             for (PspAccountsSavingsData pspAccount : savingsAccounts) {
@@ -104,7 +104,7 @@ public class AccountsData {
     }
 
     public AccountData getAccount(String accountId) {
-        log.info("accountId " +accountId);
+        log.debug("accountId " +accountId);
         for (AccountData account : accounts) {
             if (account.getAccountId().equals(accountId))
                 return account;
