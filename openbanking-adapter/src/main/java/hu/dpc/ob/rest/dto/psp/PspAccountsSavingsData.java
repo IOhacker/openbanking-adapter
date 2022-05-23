@@ -25,6 +25,10 @@ import java.time.LocalDate;
 @SuppressWarnings("unused")
 public class PspAccountsSavingsData extends PspAccountsData {
 
+    private String accountNo;
+    private Integer productId;
+    private String productName;
+    private String shortProductName;
     private PspAccountsSavingsStatusData status;
     private PspCurrencyData currency;
     private BigDecimal accountBalance;
